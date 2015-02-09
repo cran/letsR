@@ -1,8 +1,8 @@
-#' Create variables based on species geographical ranges
+#' Create species' values based on the species co-occurrence within focal ranges
 #' 
-#' @author Bruno Vilela
+#' @author Bruno Vilela & Fabricio Villalobos
 #' 
-#' @description Create species' attributes based on the attribute values of species co-occurring within their ranges.
+#' @description Create single species' values based on the attributes of species co-occurring within individual ranges.
 #'
 #' @usage lets.field(x, y, z, weigth=TRUE, count=FALSE)
 #' 
@@ -10,18 +10,21 @@
 #' @param y Species attribute to be considered. It must be a numeric attribute.
 #' @param z Species names in the same order as the attributes.
 #' @param weigth If \code{TRUE} the value is weighted by species' range size, 
-#' if \code{FALSE} the value is the mean of all species that cooccur with the
-#'  species target.
+#' if \code{FALSE} the value is the mean of all species that co-occur within the
+#'  focal species.
 #' @param count Logical, if \code{TRUE} a counting window will open.
 #'  
-#'  @details If the species do not co-occur with any other species NaN will be returned. 
+#' @details If the species do not co-occur with any other species NaN will be returned. 
+#'
+#' @references Villalobos, F. and Arita, H.T. 2010. The diversity field of New World leaf-nosed bats (Phyllostomidae). Global Ecology and Biogeography. 19, 200-211. 
+#' @references Villalobos, F., Rangel, T.F., and Diniz-Filho, J.A.F. 2013. Phylogenetic fields of species: cross-species patterns of phylogenetic structure and geographical coexistence. Proceedings of the Royal Society B. 280, 20122570
 #' 
 #' @seealso \code{\link{lets.presab.birds}}
 #' @seealso \code{\link{lets.presab}}
 #' 
 #' @examples \dontrun{
 #' data(PAM)
-#' range <- colSums(PAM$P)[-(1:2)]
+#' range <- lets.rangesize(x=PAM, units="cell")
 #' field <- lets.field(PAM, range, PAM$S, weigth=TRUE)
 #' }
 #' 

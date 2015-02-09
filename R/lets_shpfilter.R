@@ -1,8 +1,8 @@
-#' Shapefiles filtering 
+#' Filter species' shapefiles based on its presence, origin, and season
 #' 
 #' @author Bruno Vilela
 #' 
-#' @description Filter species shapefiles by origin, presence and seasonal type (following IUCN types).
+#' @description Filter species shapefiles by origin, presence, and seasonal type (following IUCN types: \url{http://www.iucnredlist.org/technical-documents/spatial-data}, see metadata)).
 #'
 #' @usage lets.shFilter(shapes, presence=NULL, origin=NULL, seasonal=NULL)
 #' 

@@ -1,11 +1,11 @@
 Package: letsR
 Type: Package
-Title: Tools for data handling and analysis in macroecology
-Version: 1.0
-Date: 2014-18-05
+Title: Tools for Data Handling and Analysis in Macroecology
+Version: 2.0
+Date: 2015-02-09
 Author: Bruno Vilela & Fabricio Villalobos
 Maintainer: Bruno Vilela <brunovilelasilva@hotmail.com>
-Description: R functions for handling and analyzing geographic data, mainly
+Description: Includes R functions for handling and analyzing geographic data, mainly
     species' geographic distributions (in ESRI shapefile format) and
     environmental variables (in raster format), as well as species' information
     related to their description (e.g. taxonomy and year of description) and
@@ -18,9 +18,9 @@ Description: R functions for handling and analyzing geographic data, mainly
     correlograms of variables, based on the Moran's I index, under the
     equiprobable or equidistant criterion to define distance classes.
 License: GPL-2
-Imports: maps, raster, XML, geosphere, maptools, sp
-Depends: R (>= 2.10)
-Packaged: 2014-05-18 18:50:13 UTC; Bruno
+Imports: XML, geosphere, fields, maptools, sp, rgdal
+Depends: R (>= 2.10), raster, maps
+Packaged: 2015-02-09 19:07:08 UTC; Bruno
 NeedsCompilation: no
 Repository: CRAN
-Date/Publication: 2014-05-19 07:10:39
+Date/Publication: 2015-02-10 00:25:44

@@ -1,16 +1,17 @@
-#' Species' geographical range midpoint
+#' Compute the midpoint of species' geographic ranges
 #' 
 #' @author Fabricio Villalobos & Bruno Vilela
 #' 
-#' @description Calculate species' geographical range midpoint from a presence-absence matrix.
+#' @description Calculate species' distributional midpoint from a presence-absence matrix.
 #' 
 #' @usage lets.midpoint(pam, planar=FALSE)
 #' 
-#' @param pam A presence-absence matrix (sites in the rows and species in the columns, with the first two columns being longitude and latitude coordinates, respectively), or an object of class PresenceAbsence.
+#' @param pam A presence-absence matrix (sites in the rows and species in the columns, with the first two columns containing the longitudinal and latitudinal coordinates, respectively), or an object of class PresenceAbsence.
 #' @param planar Logical, if \code{FALSE} the coordinates are in Longitude/Latitude. If \code{TRUE} the coordinates are planar.
 #' 
-#' @return A matrix containing the species' names and coordinates (longitude [x], latitude [y]) of species' midpoints.
+#' @return A matrix containing the species' names and geographic coordinates (longitude [x], latitude [y]) of species' midpoints.
 #'           
+#' @import fields
 #' @import geosphere
 #' 
 #' @seealso \code{\link{lets.presab}}
@@ -53,10 +54,9 @@ lets.midpoint <- function(pam, planar=FALSE){
   
   if(length(pam2[pos, 1])>1){
   dis <- geomean(cbind(pam2[pos, 1], pam2[pos, 2]))  
-  dif <- distCosine(c(dis[1, 1], 0), c(dis2[1, 1],0))/(111.321*1000) 
+  dif <- rdist.earth(cbind(dis[1, 1], 0), cbind(dis2[1, 1],0), miles=F)/(111.321*1000) 
   
   if(dif>150){
-    print(i)
     if(dis2[1, 1]>=0){
     dis2[1, 1] <- dis2[1, 1]-180
     }else{

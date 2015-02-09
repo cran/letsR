@@ -1,8 +1,8 @@
-#' Compute correlogram based on Moran's I
+#' Compute correlogram based on the Moran's I index
 #' 
 #' @author Bruno Vilela, Fabricio Villalobos, Lucas Jardim & Jose Alexandre Diniz-Filho
 #' 
-#' @description Compute Moran's correlogram of a variable using a distance matrix.
+#' @description Computes the Moran's I correlogram of a single or multiple variables.
 #'
 #' @usage lets.correl(x, y, z, equidistant=FALSE, plot=TRUE)
 #' 
@@ -12,8 +12,10 @@
 #' @param equidistant Logical, if \code{TRUE} the classes will be equidistant. If \code{FALSE} the classes will have equal number of observations.
 #' @param plot Logical, if \code{TRUE} the correlogram will be ploted. 
 #' 
-#' @return Returns a matrix with the Moran's I Observed value, Standard Deviation and Expected value. Also the p value of the null model, the mean distance between classes and the number of observations.   
+#' @return Returns a matrix with the Moran's I Observed value, Standard Deviation and Expected value. Also the p value of the randomization test, the mean distance between classes, and the number of observations.   
 #' 
+#' @references Sokal, R.R. & Oden, N.L. (1978) Spatial autocorrelation in biology. 1. Methodology. Biological Journal of the Linnean Society, 10, 199-228.
+#' @references Sokal, R.R. & Oden, N.L. (1978) Spatial autocorrelation in biology. 2. Some biological implications and four applications of evolutionary and ecological interest. Biological Journal of the Linnean Society, 10, 229-249.
 #' 
 #' @examples \dontrun{
 #' var <- runif(100)  # random variable
@@ -21,11 +23,13 @@
 #' # Correlated distance matrix
 #' distan <- matrix(runif(1000), ncol=100, nrow=100)
 #' diag(distan) <- 0
-#' distan[lower.tri(distan)] <- distan[upper.tri(distan)]
+#' ind <- lower.tri(distan)
+#' distan[ind] <- t(distan)[ind]
+#' distan[lower.tri(distan)] <- distan[upper.tri(distan)]   
 #' distan2 <- as.matrix(dist(var))
 #' distan <- (distan)*(distan2)
 #' 
-#' moran <- lets.correl(var, distan, 5, equidistant=FALSE, plot=TRUE)
+#' moran <- lets.correl(var, distan, 10, equidistant=FALSE, plot=TRUE)
 #' }
 #' 
 #' @export
@@ -60,13 +64,12 @@ lets.correl <- function(x, y, z, equidistant=FALSE, plot=TRUE){
     points(x=resu[pos3, 4], y=resu[pos3, 1], pch=20, cex=1.5)
     
     epsilon = max(resu[pos3, 4])/(14*z)
-    for(i in 1:nrow(resu)) {
       up <- resu[pos3, 1] + resu[pos3, 2]
       low <- resu[pos3, 1] - resu[pos3, 2]
       segments(resu[pos3, 4], low , resu[pos3, 4], up)
       segments(resu[pos3, 4]-epsilon, up , resu[pos3, 4]+epsilon, up)
       segments(resu[pos3, 4]-epsilon, low , resu[pos3, 4]+epsilon, low)
-    }
+
     }
     return(resu)
   }
@@ -162,22 +165,17 @@ lets.correl <- function(x, y, z, equidistant=FALSE, plot=TRUE){
   soma <- n*(sum(w*(z%o%z)))
   divi <- sum(w) * sum((z^2))
   ob <- soma/divi
-  es <- -1/(n-1)
-  
-  
+  es <- -1/(n-1)    
   S1 <-  0.5 * sum((w + t(w))^2)
   S2 <- sum((apply(w, 1, sum) + apply(w, 2, sum))^2)
   k <- n*sum(z^4)/((sum(z^2))^2)
   s.sq <- sum(w)^2
   sdi <- sqrt((n * ((n^2 - 3 * n + 3) * S1 - n * S2 + 3 * s.sq) 
-               - k * (n * (n - 1) * S1 - 2 * n * S2 + 6 * s.sq))/((n - 1) *
-                                                                    (n - 2) * (n - 3) * s.sq) - 1/((n - 1)^2))
+              - k * (n * (n - 1) * S1 - 2 * n * S2 + 6 * s.sq))/((n - 1) *
+              (n - 2) * (n - 3) * s.sq) - 1/((n - 1)^2))
   pv <- pnorm(ob, mean = es, sd = sdi)
   pv <- if (ob <= es) 
     2 * pv
   else 2 * (1 - pv)
-  
-  
-  return(list("observed"=ob, "expected"=es, "sd"=sdi, "p.value"= pv))
-  
+  return(list("observed"=ob, "expected"=es, "sd"=sdi, "p.value"= pv))  
 }
