@@ -4,14 +4,16 @@
 \alias{plot.PresenceAbsence}
 \title{Plot an object of class PresenceAbsence}
 \usage{
-\method{plot}{PresenceAbsence}(x, name=NULL, world=TRUE, \dots)
+\method{plot}{PresenceAbsence}(x, name = NULL, world = TRUE, col_rich = NULL, \dots)
 }
 \arguments{
-\item{x}{an object of class PresenceAbsence (see function presab).}
+\item{x}{An object of class \code{\link{PresenceAbsence}}.}
 
-\item{name}{you can specify a species to be ploted instead of the complete species richness map.}
+\item{name}{A character specifying a species to be ploted instead of the complete species richness map.}
 
-\item{world}{if \code{TURE} a map of political divisions (countries) is added to the plot.}
+\item{world}{If \code{TURE} a map of political divisions (countries) is added to the plot.}
+
+\item{col_rich}{Color function (e.g. \code{\link{rainbow}}, \code{\link{heat.colors}}, \code{\link{colorRampPalette}}) to be used in the richness map.}
 
 \item{...}{Other parameters pass to the plot function.}
 }
@@ -23,8 +25,10 @@ particular species' map.
 \dontrun{
 data(PAM)
 plot(PAM)
-plot(PAM, name="Phyllomedusa atelopoides")
-plot(PAM, name="Phyllomedusa azurea")
+plot(PAM, xlab = "Longitude", ylab = "Latitude",
+     main = "Phyllomedusa species richness")
+plot(PAM, name = "Phyllomedusa atelopoides")
+plot(PAM, name = "Phyllomedusa azurea")
 }
 }
 \author{

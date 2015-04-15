@@ -4,15 +4,16 @@
 \alias{lets.presab}
 \title{Create a presence-absence matrix of species' geographic ranges within a grid}
 \usage{
-lets.presab(shapes, xmn=-180, xmx=180, ymn=-90, ymx=90, resol=1,
-remove.cells=TRUE, remove.sp=TRUE, show.matrix=FALSE,
-crs=CRS("+proj=longlat +datum=WGS84"), cover=0, presence=NULL,
-origin=NULL, seasonal=NULL, count=FALSE)
+lets.presab(shapes, xmn = -180, xmx = 180, ymn = -90, ymx = 90,
+  resol = 1, remove.cells = TRUE, remove.sp = TRUE, show.matrix = FALSE,
+  crs = CRS("+proj=longlat +datum=WGS84"), cover = 0, presence = NULL,
+  origin = NULL, seasonal = NULL, count = FALSE)
 }
 \arguments{
-\item{shapes}{Object of class SpatialPolygonsDataFrame (see function \code{\link{readShapePoly}}
-to open these files). Species names should be in a column (within the .DBF table of the shapefile)
-called BINOMIAL or binomial.}
+\item{shapes}{Object of class \code{SpatialPolygonsDataFrame} (see function \code{\link{readShapePoly}}
+to open these files) containing the distribution of one or more species.
+Species names should be in a column (within the .DBF table of the shapefile)
+called BINOMIAL/binomial or SCINAME/sciname.}
 
 \item{xmn}{Minimun longitude used to construct the grid in which the matrix will be based
 (i.e. the [gridded] geographic domain of interest)}
@@ -34,7 +35,7 @@ grid with a value of zero (i.e. sites with no species present).}
 \item{remove.sp}{Logical, if \code{TRUE} the final matrix will not contain species that
 do not match any cell in the grid.}
 
-\item{show.matrix}{Logical, if \code{TRUE} only the presence-absence matrix will be shown.}
+\item{show.matrix}{Logical, if \code{TRUE} only the presence-absence matrix will be returned.}
 
 \item{crs}{Character representign the PROJ.4 type description of a Coordinate Reference System (map projection).}
 
@@ -53,7 +54,7 @@ do not match any cell in the grid.}
 \item{count}{Logical, if \code{TRUE} a counting window will open.}
 }
 \value{
-The result is a list object of class PresenceAbsence with the following objects:
+The result is a list object of class \code{\link{PresenceAbsence}} with the following objects:
 
 \strong{Presence-Absence Matrix}: A matrix of species' presence(1) and absence(0) information.
 The first two columns contain the longitude (x) and latitude (y) of the cells' centroid
@@ -79,11 +80,17 @@ polygons is not the same as the number of species that you have
 }
 \examples{
 \dontrun{
-data(Phyllomedusa)  # Spatial distribution polygons of south american frogs of genus Phyllomedusa.
-PAM <- lets.presab(Phyllomedusa, xmn=-93, xmx=-29, ymn= -57, ymx=15)
+# Spatial distribution polygons of south american frogs
+# of genus Phyllomedusa.
+data(Phyllomedusa)
+PAM <- lets.presab(Phyllomedusa, xmn = -93, xmx = -29,
+                   ymn = -57, ymx = 15)
 summary(PAM)
-plot(PAM)  # Species richness map
-plot(PAM, name="Phyllomedusa nordestina")  # Map of the specific species
+# Species richness map
+plot(PAM, xlab = "Longitude", ylab = "Latitude",
+     main = "Phyllomedusa species richness")
+# Map of the specific species
+plot(PAM, name = "Phyllomedusa nordestina")
 }
 }
 \author{

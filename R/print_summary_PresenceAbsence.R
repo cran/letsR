@@ -6,7 +6,7 @@
 #' @usage 
 #' \method{print.summary}{PresenceAbsence}(x, \dots)
 #' 
-#' @param x an object of class PresenceAbsence (see function presab).
+#' @param x an object of class \code{\link{PresenceAbsence}}.
 #' @param ... Other print parameters.
 #' 
 #' @S3method print summary.PresenceAbsence
@@ -25,8 +25,11 @@ print.summary.PresenceAbsence <- function(x, ...){
   cat("\n_ _")  
   
   cat("\nGrid parameters")
-  cat("\nResolution: ", x$resolution[1], ", ", x$resolution[2], " (x, y)", sep="")  
-  cat("\nExtention: ", xmin(x$ex), ", ",  xmax(x$ex), ", ", ymin(x$ex), ", ", ymax(x$ex), " (xmin, xmax, ymin, ymax)", sep="")
+  cat("\nResolution: ", x$resolution[1], ", ", x$resolution[2],
+      " (x, y)", sep = "")  
+  cat("\nExtention: ", xmin(x$ex), ", ",  xmax(x$ex), ", ",
+      ymin(x$ex), ", ", ymax(x$ex), " (xmin, xmax, ymin, ymax)",
+      sep = "")
   cat("\nCoord. Ref.: ", x$coordRef)
   
 }

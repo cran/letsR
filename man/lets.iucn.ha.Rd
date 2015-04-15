@@ -4,20 +4,22 @@
 \alias{lets.iucn.ha}
 \title{Download species' habitat information from the IUCN RedList online database}
 \usage{
-lets.iucn.ha(input, count=FALSE)
+lets.iucn.ha(input, count = FALSE)
 }
 \arguments{
 \item{input}{Character vector with one or more species names,
-or an object of the PresenceAbsence class.}
+or an object of the \code{\link{PresenceAbsence}} class.}
 
 \item{count}{Logical, if \code{TRUE} a counting window will open.}
 }
 \value{
-A data frame with species names in the first column and the habitats where it occurs in the remaining columns,
+A data frame with species names in the first column and the
+habitats where it occurs in the remaining columns,
 '1' if species is present in that habitat and '0' otherwise.
 }
 \description{
-Get species' habitat information from the IUCN RedList website(\url{http://www.iucnredlist.org/}) for one or more species.
+Get species' habitat information from the IUCN RedList
+website(\url{http://www.iucnredlist.org/}) for one or more species.
 }
 \details{
 Note that you must be connected to the internet to use this function.
@@ -28,7 +30,9 @@ Note that you must be connected to the internet to use this function.
 lets.iucn.ha("Pongo pygmaeus")
 
 # Multiple species
-lets.iucn.ha(c("Musonycteris harrisoni", "Ailuropoda melanoleuca", "Cebus flavius"))
+sp <- c("Musonycteris harrisoni", "Ailuropoda melanoleuca",
+        "Cebus flavius")
+lets.iucn.ha(sp)
 }
 }
 \author{

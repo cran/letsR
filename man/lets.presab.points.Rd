@@ -4,9 +4,10 @@
 \alias{lets.presab.points}
 \title{Create a presence-absence matrix based on species' point occurrences}
 \usage{
-lets.presab.points(xy, species, xmn=-180, xmx=180, ymn=-90, ymx=90,
-resol=1, remove.cells=TRUE, remove.sp=TRUE, show.matrix=FALSE,
-crs=CRS("+proj=longlat +datum=WGS84"), count=FALSE)
+lets.presab.points(xy, species, xmn = -180, xmx = 180, ymn = -90,
+  ymx = 90, resol = 1, remove.cells = TRUE, remove.sp = TRUE,
+  show.matrix = FALSE, crs = CRS("+proj=longlat +datum=WGS84"),
+  count = FALSE)
 }
 \arguments{
 \item{xy}{A matrix with geographic coordinates of species occurrences, first column is the longitude (or x), and the second latitude (or y).}
@@ -27,14 +28,14 @@ crs=CRS("+proj=longlat +datum=WGS84"), count=FALSE)
 
 \item{remove.sp}{Logical, if \code{TRUE} the final matrix will not contain species that do not match any cell in the grid.}
 
-\item{show.matrix}{Logical, if \code{TRUE} only the presence-absence matrix will be shown.}
+\item{show.matrix}{Logical, if \code{TRUE} only the presence-absence matrix will be returned.}
 
 \item{crs}{Character representign the PROJ.4 type description of a Coordinate Reference System (map projection).}
 
 \item{count}{Logical, if \code{TRUE} a counting window will open.}
 }
 \value{
-The result is an object of class PresenceAbsence with the following objects:
+The result is an object of class \code{\link{PresenceAbsence}} with the following objects:
 
 \strong{Presence-Absence Matrix}: A matrix of species' presence(1) and absence(0) information. The first two columns contain the longitude (x) and latitude (y) of the cells' centroid (from the gridded domain used);
 
@@ -54,15 +55,20 @@ polygons is not the same as the number of species that you have (i.e. a species 
 }
 \examples{
 \dontrun{
-species <- c(rep("sp1", 100), rep("sp2", 100), rep("sp3", 100), rep("sp4", 100))
+species <- c(rep("sp1", 100), rep("sp2", 100),
+             rep("sp3", 100), rep("sp4", 100))
 x <- runif(400, min = -69, max = -51)
 y <- runif(400, min = -23, max = -4)
-xy <- cbind(x,y)
-PAM <- lets.presab.points(xy, species, xmn=-93, xmx=-29, ymn= -57, ymx=15)
+xy <- cbind(x, y)
+PAM <- lets.presab.points(xy, species, xmn = -93, xmx = -29,
+                          ymn = -57, ymx = 15)
 summary(PAM)
-require(maps)
-plot(PAM)  # Species richness map
-plot(PAM, name="sp1")  # Map of the specific species
+# Species richness map
+plot(PAM, xlab = "Longitude", ylab = "Latitude",
+     main = "Species richness map (simulated)")
+
+# Map of the specific species
+plot(PAM, name = "sp1")
 }
 }
 \author{

@@ -6,18 +6,18 @@
 #' @usage 
 #' \method{print}{PresenceAbsence}(x, \dots)
 #' 
-#' @param x an object of class PresenceAbsence (see function presab).
+#' @param x an object of class \code{\link{PresenceAbsence}}.
 #' @param ... Other print parameters.
 #' 
 #' @S3method print PresenceAbsence
 
 
-print.PresenceAbsence <- function(x, ...){
+print.PresenceAbsence <- function(x, ...) {
   resolution <- res(x$Ric)
   cat("\nClass:", class(x),
-      "\nNumber of species:", (ncol(x$Pre)-2),
+      "\nNumber of species:", (ncol(x$Pre) - 2),
       "\nNumber of cells:", nrow(x$Pre))
-  cat("\nResolution: ", resolution[1], ", ", resolution[2], " (x, y)", sep="")  
-      
+  cat("\nResolution: ", resolution[1], ", ", resolution[2], " (x, y)\n", sep="")  
+  
 }
 
