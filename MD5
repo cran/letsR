@@ -1,10 +1,10 @@
-a6a43ac33a7f2686a9ab45b5b4adc55e *DESCRIPTION
+b61d40e5440177e9f5dad9904fce5e4e *DESCRIPTION
 3044510dd5df0629aac92dc759bf878f *NAMESPACE
 8a12a80e688249495e5b19147d96a353 *R/Data_helps.R
 950e836a84f57f034aa9233d9cd1a707 *R/PresenceAbsence-class.R
 f9df9a3fbde7647c4570cac0de27d2ef *R/getcode.R
 1f4391d6effe04c3c65130bea390e70e *R/getnames.R
-12aa8ca90ed195f6c2ee58dd92fdbe92 *R/letsR-package.R
+f462738498a452379e133d508066930c *R/letsR-package.R
 9d3ff2e37ffd11da72b53266d3e805ff *R/lets_addpoly.R
 f7589ac0aec6f8aa9c502e58d8779a54 *R/lets_addvar.R
 06295b78be2370c32ef31be6f0c60334 *R/lets_classvar.R
@@ -16,7 +16,7 @@ e25f7becefe683a95e21ac219b6c84e9 *R/lets_iucn.R
 7d9131d81c0491dc2d2f5401747a17ac *R/lets_iucn_habitats.R
 9857eea1d34833ba803889ce2bc8dea8 *R/lets_iucn_historic.R
 90797596a68a3906bcec670f7b40bd91 *R/lets_iucncont.R
-51e278487b2d5fe5f9aee7a2844934d3 *R/lets_maplizer.R
+654fbc36dba51a581e4e63df4dae9073 *R/lets_maplizer.R
 10a2139c6c172614522cc6a74c7bcc89 *R/lets_midpoint.R
 61efc4bebafa6512fbcad6f249f4f9f5 *R/lets_overlap.R
 26213779868f0a46e1acd7c3e62294d0 *R/lets_pamcrop.R
@@ -101,7 +101,7 @@ fd6b7650d0c53481145d9e530d54f122 *man/lets.gridirizer.Rd
 5c06b5ed1aa90c81a025938be3c30140 *man/lets.iucn.ha.Rd
 61894d0095b0af7db65c5f2ab2a8508d *man/lets.iucn.his.Rd
 1e3a7762bd59456681496487b279aad9 *man/lets.iucncont.Rd
-095a9bb7e0973104b625648b2dfaba37 *man/lets.maplizer.Rd
+018341d590dbd3b3c075df59fe2e9af6 *man/lets.maplizer.Rd
 3f012176b3e4fcf9f43bc3eb13d64934 *man/lets.midpoint.Rd
 436161ddae5e2d3720b8ebc682a72c9c *man/lets.overlap.Rd
 9f41db333c950074719f1e2ce22dc560 *man/lets.pamcrop.Rd
@@ -114,14 +114,14 @@ b84ac7e982438d9c311aafca1491ae4d *man/lets.rangesize.Rd
 422ed85232c3925edf7f7c2fe4a6e54d *man/lets.subsetPAM.Rd
 8af57a50747c2e1fe8c8c498c64fcc35 *man/lets.summarizer.Rd
 416d445f8e18faf3e3aecb8e03951b78 *man/lets.transf.Rd
-bdd05ad8769e51e0681e9e1256378f20 *man/letsR-package.Rd
+586c66569ce367081d807f14829c9135 *man/letsR-package.Rd
 56adcf8f5a2d252c5b230b11cdc2ea6e *man/plot.PresenceAbsence.Rd
 3e296b8e2ffeded37be8d440422caa82 *man/print.PresenceAbsence.Rd
 af9e274eb0e208dac3c73ba7128fb7a5 *man/print.summary.PresenceAbsence.Rd
 ab908e0809a28fdbdda81c3a302f1685 *man/summary.PresenceAbsence.Rd
 9d7be8fe4d2b5a963084b026012dc7e2 *man/temp.Rd
 dc4827d7f92b0070d566967b0918fb87 *tests/test-all.R
-a3a8e1b53fbd08be17ceb8c493d60a0f *tests/testthat/test-TimLucas.r
+4614e4bab17483f2c173e3779ebf2ea8 *tests/testthat/test-TimLucas.r
 20146ea73fe0ecb5510c9973a618f5f1 *tests/testthat/test-lets_addpoly.R
 9a51db0649d0026123a33dd47682aaeb *tests/testthat/test-lets_addvar.R
 c280ed1d9c7189fcdfd3afc0589bcf20 *tests/testthat/test-lets_classvar.R
@@ -130,7 +130,7 @@ c280ed1d9c7189fcdfd3afc0589bcf20 *tests/testthat/test-lets_classvar.R
 c61259b2c376d7517a900777e7f346bc *tests/testthat/test-lets_field.R
 f72a598d604fce5dc20dae49b1adce3f *tests/testthat/test-lets_gridirizer.R
 cccb57e727b49a305f75c7e2afc4e779 *tests/testthat/test-lets_iuccont.R
-802fbe896f57652c2c34e373f68dc949 *tests/testthat/test-lets_iucn.R
+55019d4be16652d789c6cd6c79d0e664 *tests/testthat/test-lets_iucn.R
 b29aae097f7981233e8e26baa54fc939 *tests/testthat/test-lets_iucn_ha.R
 a45c9991a6b3fa9e440a9ca64292e11f *tests/testthat/test-lets_iucn_his.R
 a780bf3df6cd726b5471a107767a0fba *tests/testthat/test-lets_maplizer.R
