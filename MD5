@@ -1,10 +1,10 @@
-1a8eac3cc8572fb8ec8d77c9b025716c *DESCRIPTION
+7d3722c2827a2a0bd26227fa111a6ab9 *DESCRIPTION
 b53822bd88f85d4fa86b890f3d14b9fe *NAMESPACE
 dbec19ada9760e481809f53cbc96a79c *R/Data_helps.R
 7f722ebd010c9eb18381b3ed3bb93b85 *R/PresenceAbsence-class.R
 c643b5973e10cbc174ddc830ea5da0ec *R/getcode.R
 845a9de7085f23ed50f49db8842b596a *R/getnames.R
-ce19c7a37905cac3c79baa06c7078c6e *R/letsR-package.R
+6f39f4a02d331fe5844242ac92c93879 *R/letsR-package.R
 f9ce50f0b9e15d80549f110812ebd091 *R/lets_addpoly.R
 b7c29f9fd4ddde289744545c2534a39b *R/lets_addvar.R
 664c93486fffe9d20c4fc06670e5fd12 *R/lets_classvar.R
@@ -20,9 +20,9 @@ a8867469e227242a5583ff21b4905027 *R/lets_maplizer.R
 f820015d1452a3b20e3aa99542a1a696 *R/lets_midpoint.R
 600fdaff4b9c4841d4a2b615a74bf5c2 *R/lets_overlap.R
 0637466bd35b6d66bac1bb2f79950505 *R/lets_pamcrop.R
-3d50bd4964d8b228c0affeb6d4fa7116 *R/lets_presab.R
-9c58bcbe8dfc02e919fe1257318f6259 *R/lets_presab_birds.R
-be671784d99c8d88ca9f3b49a12e9cc9 *R/lets_presab_grid.R
+f4a53105074bcbef2c329c0ef94abebb *R/lets_presab.R
+6b3415fa3c8dce6a607ce157785bd2eb *R/lets_presab_birds.R
+b12b00691507ce982dfea9af54ecfd54 *R/lets_presab_grid.R
 1e01c4eb83bb7d800d9557646269d546 *R/lets_presab_points.R
 45fea199d108bbf9fbe77efe85ab6f73 *R/lets_rangesize.R
 7eaa6451362a780ffd6c1ff87593d342 *R/lets_shpfilter.R
@@ -114,7 +114,7 @@ db82e3301d3b6a79248fc50caeae86eb *man/lets.presab.Rd
 a101dc8da46fd6a7225760bd85415cdf *man/lets.subsetPAM.Rd
 9074b3d5c2d53bc12a69924465a9a80c *man/lets.summarizer.Rd
 071c380845ff231f2ff5bb9e28078722 *man/lets.transf.Rd
-31092e74679ccac734c8574188bad5cc *man/letsR-package.Rd
+840d86f19772b98672ceafa9eb2777c7 *man/letsR-package.Rd
 758176c3ba42e0748dff2a51aebfe70f *man/plot.PresenceAbsence.Rd
 c08d84100b19643eab47e7ed2dbb71eb *man/print.PresenceAbsence.Rd
 58fb10bdaf4c1940d50422deb1c8d42d *man/print.summary.PresenceAbsence.Rd
