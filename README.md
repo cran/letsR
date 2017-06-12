@@ -1,11 +1,14 @@
 [![Travis-CI Build Status](https://travis-ci.org/BrunoVilela/letsR.png?branch=master)](https://travis-ci.org/BrunoVilela/letsR)
 [![Coverage Status](https://coveralls.io/repos/BrunoVilela/letsR/badge.svg)](https://coveralls.io/r/BrunoVilela/letsR)
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/letsR)](http://cran.r-project.org/package=letsR)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/letsR)](https://CRAN.R-project.org/package=letsR)
 [![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/letsR)](https://github.com/metacran/cranlogs.app)
 [![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/grand-total/letsR)](https://github.com/metacran/cranlogs.app)
 [![Research software impact](http://depsy.org/api/package/cran/letsR/badge.svg)](http://depsy.org/package/r/letsR)
 
 =====
+## IMPORTANT
+Due to changes in the IUCN API and to limitations in data distribution stabilished IUCN terms of use, we are no longer mataining the functions lets.iucn, lets.iucn.hist and lets.iucn.ha. These functions will be removed from the package in the next version. We apologize for any incovinience this may cause.  
+
 ## Package letsR
 
 The letsR package is being developed to help researchers in the handling, processing, and analysis of macroecological data. Its purpose is to integrate these methodological processes into a single software platform for macroecological analyses. The package's main functions allow users to build presence-absence matrices, the basic analytical tool in macroecology, from species' geographical distributions and merge them with species' traits, conservation information(downloadable using functions from this package) and spatial environmental layers. In addition, other package's functions enable users to summarize and visualize information from presence-absence matrices.
@@ -49,21 +52,4 @@ library(letsR)
 
 OBS.: To download the developers version you will need to have the git software installed (http://git-scm.com/).
 If you are a windows user you will also need to download the Rtools (http://cran.r-project.org/bin/windows/Rtools/).
-
-
-## Key functions
-
-The `letsR` package includes many different functions. Below we highlight some of them:
-
-- `lets.presab`: Builts a presence-absence matrix (sites x species) based on species’ range maps from shapefiles.
-- `lets.presab.birds`: Builts a presence-absence matrix (sites x species) based on species’ range maps from shapefiles (specially designed for the BirdLife International database).
-- `lets.addvar`: Add variables in raster format to a presence-absence matrix.
-- `lets.addpoly`: Add variables in polygon format to a presence-absence matrix.
-- `lets.iucn`: Get species’ information from the IUCN website.
-- `lets.iucn.ha`: Get species’ habitat information from the IUCN website.
-- `lets.iucn.his`: Get information on the history of species’ conservation status from the IUCN website.
-
-Take a look at the functions' help files for more information.
-
-
 

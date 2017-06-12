@@ -1,4 +1,5 @@
 #' Download species' habitat information from the IUCN RedList online database
+#' (No longer supported)
 #' 
 #' @author Bruno Vilela
 #' 
@@ -34,8 +35,11 @@
 
 lets.iucn.ha <- function(input, count = FALSE) {
   #keep species name(s)
+  stop(paste("This function is no longer supported by the letsR package.",
+             "Users can look for the package rredlist for similar functions.",
+             "See the note on our github page for more details."))
   
-  sps <- .getnames(input) 
+  input <- .getnames(input) 
   
   
   #Habitat names (and the name "Species" that will be used in the matrix columns names)
@@ -101,7 +105,7 @@ lets.iucn.ha <- function(input, count = FALSE) {
   }
   
   #Putting species' names in the first column
-  habitat[, 1] <- sps
+  habitat[, 1] <- input
   
   #Return the resulting matrix
   return(as.data.frame(habitat))
