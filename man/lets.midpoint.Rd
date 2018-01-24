@@ -4,7 +4,7 @@
 \alias{lets.midpoint}
 \title{Compute the midpoint of species' geographic ranges}
 \usage{
-lets.midpoint(pam, planar = FALSE, method = "GM")
+lets.midpoint(pam, planar = FALSE, method = "PC")
 }
 \arguments{
 \item{pam}{A presence-absence \code{matrix} (sites in the rows and species
@@ -15,10 +15,22 @@ and latitudinal coordinates, respectively), or an object of class
 \item{planar}{Logical, if \code{FALSE} the coordinates are in Longitude/Latitude.
 If \code{TRUE} the coordinates are planar.}
 
-\item{method}{Users can choose between the geographic midpoint (or center of gravity), 
-using the option "GM". Alternatively, the midpoint can be calculated as the point
-that minimize the distance between all cells of the PAM (center of minimun distance),
-using the method "CMD".}
+\item{method}{Default option, "PC" (polygon centroid) will generate a polygon from the raster, 
+and calculate the centroid of this polygon. If planar = TRUE, 
+the function centroid of the package geosphere is used. If planar = FALSE,
+the function gCentroid of the package rgeos is used. 
+Note that for the "PC" method, users can only use PresenceAbsence objects. 
+Note also that this method will not be the best for PresenceAbsence objects 
+made from occurrence records, or that have multiple disjoint distributions. 
+Users can also choose the geographic midpoint, 
+using the option "GM". "GM" will create a bouding box across the extremes of the 
+distribution and calculate the centroid.
+Alternatively, the midpoint can be calculated as the point
+that minimize the distance between all cells of the PAM,
+using the method "CMD"(center of minimun distance). 
+The user can also calculate the midpoint, based on the centroid of the minimum
+convex polygon of the distribution, using the method "MCC". This last method is
+usefull when using a PresenceAbsence object made from occurrence records.}
 }
 \value{
 A \code{data.frame} containing the species' names and geographic coordinates 
@@ -26,12 +38,33 @@ A \code{data.frame} containing the species' names and geographic coordinates
 }
 \description{
 Calculate species' distributional midpoint from a 
-presence-absence matrix.
+presence-absence matrix using several methods.
 }
 \examples{
 \dontrun{
 data(PAM)
-mid <- lets.midpoint(PAM)
+mid <- lets.midpoint(PAM, method = "PC")
+mid2 <- lets.midpoint(PAM, method = "GM")
+mid3 <- lets.midpoint(PAM, method = "CMD")
+mid4 <- lets.midpoint(PAM, method = "MCC")
+mid5 <- lets.midpoint(PAM, method = "PC", planar = TRUE)
+mid6 <- lets.midpoint(PAM, method = "GM", planar = TRUE)
+mid7 <- lets.midpoint(PAM, method = "CMD", planar = TRUE)
+mid8 <- lets.midpoint(PAM, method = "MCC", planar = TRUE)
+
+for (sp in 1:nrow(mid)) {
+ #sp = 4 # Or choose a line or species
+ plot(PAM, name = mid[sp, 1])
+ points(mid[sp, -1], col = adjustcolor("blue", .8), pch = 20, cex = 1.5)
+ points(mid2[sp, -1], col = adjustcolor("green", .8), pch = 20, cex = 1.5)
+ points(mid3[sp, -1], col = adjustcolor("yellow", .8), pch = 20, cex = 1.5)
+ points(mid4[sp, -1], col = adjustcolor("purple", .8), pch = 20, cex = 1.5)
+ points(mid5[sp, -1], col = adjustcolor("orange", .8), pch = 20, cex = 1.5)
+ points(mid6[sp, -1], col = adjustcolor("black", .8), pch = 20, cex = 1.5)
+ points(mid7[sp, -1], col = adjustcolor("gray", .8), pch = 20, cex = 1.5)
+ points(mid8[sp, -1], col = adjustcolor("brown", .8), pch = 20, cex = 1.5)
+ Sys.sleep(1)
+}
 } 
 
 }

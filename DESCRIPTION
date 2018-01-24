@@ -1,8 +1,8 @@
 Package: letsR
 Type: Package
 Title: Tools for Data Handling and Analysis in Macroecology
-Version: 3.0
-Date: 2017-05-23
+Version: 3.1
+Date: 2018-01-24
 Author: Bruno Vilela & Fabricio Villalobos
 Maintainer: Bruno Vilela <brunovilelasilva@hotmail.com>
 Description: R functions for handling, processing, and analyzing geographic
@@ -18,6 +18,6 @@ URL:
 BugReports: https://github.com/macroecology/letsR/issues
 RoxygenNote: 6.0.1
 NeedsCompilation: no
-Packaged: 2017-06-12 23:30:15 UTC; bvilela
+Packaged: 2018-01-24 16:25:30 UTC; bvilela
 Repository: CRAN
-Date/Publication: 2017-06-12 23:51:39 UTC
+Date/Publication: 2018-01-24 16:49:04 UTC
