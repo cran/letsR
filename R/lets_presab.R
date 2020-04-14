@@ -29,10 +29,9 @@
 #' Note that when you change this options you may probably change 
 #' the extent coordinates and the resolution.
 #' @param cover Porcentage of the cell covered by the shapefile that will be considered for presence 
-#' (values between 0 and 1). This option is only available when the coordinates 
-#' are in degrees (longitude/latitude).
+#' (values between 0 and 1). 
 #' @param presence A vector with the code numbers for the presence type to be considered in the process 
-#' (for IUCN spatial data \url{http://www.iucnredlist.org/technical-documents/spatial-data}, see metadata). 
+#' (for IUCN spatial data \url{https://www.iucnredlist.org/resources/spatial-data-download}, see metadata). 
 #' @param origin A vector with the code numbers for the origin type to be considered in the process 
 #' (for IUCN spatial data).
 #' @param seasonal A vector with the code numbers for the seasonal type to be considered in the process 
@@ -73,8 +72,19 @@
 #'      main = "Phyllomedusa species richness")
 #' # Map of the specific species      
 #' plot(PAM, name = "Phyllomedusa nordestina")
-#' }
 #' 
+#' # Other projections
+#'  pro <- paste("+proj=eqdc +lat_0=-32 +lon_0=-60 +lat_1=-5",
+#'               "+lat_2=-42 +x_0=0 +y_0=0 +ellps=aust_SA", 
+#'               "+units=m +no_defs")
+#' SA_EC <- CRS(pro)
+#' PAM_proj <- lets.presab(shapes = Phyllomedusa, xmn = -4135157,
+#'                         xmx = 4707602, ymn = -450000, ymx = 5774733,
+#'                         resol = 100000, crs.grid = SA_EC)
+#'}
+
+
+
 #' 
 #' @import raster
 #' @import maptools
@@ -133,14 +143,22 @@ lets.presab <- function(shapes, xmn = -180, xmx = 180, ymn = -90,
   areagrid <- NULL
   
   if (cover > 0) {
-    areashape <- areaPolygon(shapes)
-    global <- xmn == -180 & xmx == 180 & ymn == -90 & ymx == 90
-    if (!global) {
-      grid <- rasterToPolygons(ras)      
-      areagrid <- try(areaPolygon(grid), silent = TRUE)
-    }
-    if (class(areagrid) == "try-error" | global) {
-      areagrid <- values(area(ras)) * 1000000
+    ex <- c(xmn, xmx, ymn, ymx)
+    latlong <- all(ex >= -180 & ex <= 180)
+    if (latlong) {
+      areashape <- areaPolygon(shapes)
+      global <- xmn == -180 & xmx == 180 & ymn == -90 & ymx == 90
+      if (!global) {
+        grid <- rasterToPolygons(ras)      
+        areagrid <- try(areaPolygon(grid), silent = TRUE)
+      }
+      if (class(areagrid) == "try-error" | global) {
+        areagrid <- values(area(ras)) * 1000000
+      }
+    } else {
+      grid <- rasterToPolygons(ras)
+      areashape <- rgeos::gArea(shapes, byid = TRUE)
+      areagrid <- rgeos::gArea(grid, byid = TRUE)
     }
   }
   

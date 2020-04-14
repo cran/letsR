@@ -5,10 +5,24 @@
 \title{Create a presence-absence matrix of species' geographic ranges within a
 grid for the Birdlife spatial data}
 \usage{
-lets.presab.birds(path, xmn = -180, xmx = 180, ymn = -90, ymx = 90,
-  resol = 1, remove.cells = TRUE, remove.sp = TRUE, show.matrix = FALSE,
-  crs = NULL, crs.grid = crs, cover = 0, presence = NULL,
-  origin = NULL, seasonal = NULL, count = FALSE)
+lets.presab.birds(
+  path,
+  xmn = -180,
+  xmx = 180,
+  ymn = -90,
+  ymx = 90,
+  resol = 1,
+  remove.cells = TRUE,
+  remove.sp = TRUE,
+  show.matrix = FALSE,
+  crs = NULL,
+  crs.grid = crs,
+  cover = 0,
+  presence = NULL,
+  origin = NULL,
+  seasonal = NULL,
+  count = FALSE
+)
 }
 \arguments{
 \item{path}{Path location of folders with one or more species' individual shapefiles. 
@@ -46,11 +60,10 @@ Note that when you change this options you may probably change
 the extent coordinates and the resolution.}
 
 \item{cover}{Porcentage of the cell covered by the shapefile that will be considered for 
-presence (values between 0 and 1). This option is only available when the coordinates 
-are in degrees (longitude/latitude).}
+presence (values between 0 and 1).}
 
 \item{presence}{A vector with the code numbers for the presence type to be considered 
-in the process (for IUCN spatial data \url{http://www.iucnredlist.org/technical-documents/spatial-data},
+in the process (for IUCN spatial data \url{https://www.iucnredlist.org/resources/spatial-data-download},
 see metadata).}
 
 \item{origin}{A vector with the code numbers for the origin type to be considered in the process 
