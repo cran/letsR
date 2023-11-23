@@ -30,25 +30,25 @@
 plot.PresenceAbsence <- function(x, name = NULL, world = TRUE,
                                  col_rich = NULL, col_name = "red",
                                  ...) {
-  
+  x <- .check_pam(x)
   # Richness plot
   if (is.null(name)) {
     
     # Creating the color function
     if (is.null(col_rich)) {      
       # Colour ramp from colorbrewer (T. Lucas suggestion)
-      colfunc <- colorRampPalette(c("#fff5f0", "#fb6a4a", "#67000d"))
+      colfunc <- grDevices::colorRampPalette(c("#fff5f0", "#fb6a4a", "#67000d"))
     } else {
       colfunc <- col_rich
     }
     
     # Getting values  
-    v <- values(x$Rich)
+    v <- terra::values(x$Rich)
     c <- max(v, na.rm = TRUE)
     
     # Set zero to NA
     v[(v == 0)] <- NA
-    values(x$Rich) <- v
+    terra::values(x$Rich) <- v
     
     # Plot, add one and remove the first to not be white.
     plot(x$Rich, col = colfunc(c + 1)[-1], ...)  
@@ -59,12 +59,15 @@ plot.PresenceAbsence <- function(x, name = NULL, world = TRUE,
     # Species position in the PAM
     pos <- which(x$Sp == name)
     # Transform the one species in raster
-    r <- rasterize(x$Presen[ , 1:2], x$Rich,  x$Presen[ , (pos + 2)])
+    r <- terra::rasterize(x$Presen[ , 1:2], 
+                          x$Rich, 
+                          x$Presen[ , (pos + 2)])
     # Plot
     plot(r, col = c("white", col_name), legend = FALSE, ...)
   }
   if (world) {
-    map(add = TRUE)
+    wrld_simpl <- get(utils::data("wrld_simpl", package = "letsR"))
+    plot(sf::st_geometry(wrld_simpl), add = TRUE)
   }
   # Avoid return map
   invisible(NULL)

@@ -9,7 +9,7 @@
 \arguments{
 \item{object}{an object of class \code{\link{PresenceAbsence}}.}
 
-\item{...}{Other summary parameters.}
+\item{...}{additional arguments affecting the summary produced.}
 }
 \description{
 Summary for objects of class PresenceAbsence.

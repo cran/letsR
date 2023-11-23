@@ -28,7 +28,7 @@ the follow objects:
 coordinates and the summarized species' attributes within them.
 
 \strong{Raster}: The summarized species'attributed maped in a 
-\code{raster} object.
+\code{SpatRaster} object.
 }
 \description{
 Summarize species atributes per cell in a presence-absence matrix.
@@ -41,7 +41,8 @@ trait <- IUCN$Description_Year
 resu <- lets.maplizer(PAM, trait, PAM$S, ras = TRUE)
 head(resu$Matrix)
 plot(resu$Raster, xlab = "Longitude", ylab = "Latitude", 
-main = "Mean description year per site") ; map(add = TRUE)
+main = "Mean description year per site")
+
 }
 
 }
