@@ -1,8 +1,8 @@
 Package: letsR
 Type: Package
 Title: Data Handling and Analysis in Macroecology
-Version: 5.0
-Date: 2023-11-22
+Version: 6.0
+Date: 2026-03-27
 Authors@R: c(person(given = "Bruno", family = "Vilela",
                     email = "bvilela.bv@gmail.com",
                     role = c("aut", "cre"), 
@@ -23,13 +23,15 @@ URL:
         https://github.com/macroecology/letsR,
         https://brunovilela.github.io/letsR/
 BugReports: https://github.com/macroecology/letsR/issues
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.3
 Encoding: UTF-8
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2023-11-22 20:22:10 UTC; brunovilela
-Author: Bruno Vilela [aut, cre] (<https://orcid.org/0000-0003-4072-0558>),
-  Fabricio Villalobos [aut] (<https://orcid.org/0000-0002-5230-2217>)
+Packaged: 2026-03-27 20:02:08 UTC; bruno
+Author: Bruno Vilela [aut, cre] (ORCID:
+    <https://orcid.org/0000-0003-4072-0558>),
+  Fabricio Villalobos [aut] (ORCID:
+    <https://orcid.org/0000-0002-5230-2217>)
 Maintainer: Bruno Vilela <bvilela.bv@gmail.com>
 Repository: CRAN
-Date/Publication: 2023-11-23 09:00:02 UTC
+Date/Publication: 2026-03-27 20:50:02 UTC

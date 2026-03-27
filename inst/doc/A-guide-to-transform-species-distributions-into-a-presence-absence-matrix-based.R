@@ -1,12 +1,12 @@
 ## ----setup, include=FALSE-----------------------------------------------------
 knitr::opts_chunk$set(fig.height = 5, fig.width = 4, fig.align = 'center')
 
-## ---- message = FALSE, warning = FALSE----------------------------------------
+## ----message = FALSE, warning = FALSE-----------------------------------------
 library(letsR)
 
 data("Phyllomedusa")
 
-## ---- fig.height=5, fig.width=4, fig.align='center'---------------------------
+## ----fig.height=5, fig.width=4, fig.align='center'----------------------------
 # Plot
 ## Color settings and assignment
 colors <- rainbow(length(unique(Phyllomedusa$binomial)),
@@ -40,7 +40,7 @@ presab <- PAM$Presence_and_Absence_Matrix
 # Print only the first 5 rows and 3 columns
 presab[1:5, 1:3]
 
-## ---- message=FALSE, warning=FALSE--------------------------------------------
+## ----message=FALSE, warning=FALSE---------------------------------------------
 pro <- paste("+proj=eqdc +lat_0=-32 +lon_0=-60 +lat_1=-5",
              "+lat_2=-42 +x_0=0 +y_0=0 +ellps=aust_SA", 
              "+units=m +no_defs")
@@ -54,7 +54,7 @@ PAM_proj <- lets.presab(Phyllomedusa, xmn = -4135157,
 ## -----------------------------------------------------------------------------
 summary(PAM_proj)
 
-## ---- message=FALSE, warning=FALSE--------------------------------------------
+## ----message=FALSE, warning=FALSE---------------------------------------------
 plot(PAM_proj)
 # Add projected country boundaries
 data("wrld_simpl")

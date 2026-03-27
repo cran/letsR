@@ -1,4 +1,4 @@
-## ---- include = FALSE---------------------------------------------------------
+## ----include = FALSE----------------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -6,7 +6,7 @@ knitr::opts_chunk$set(
   fig.width = 6,
   fig.align = 'center')
 
-## ---- message = FALSE, warning = FALSE, r, fig.width = 4----------------------
+## ----message = FALSE, warning = FALSE, r, fig.width = 4-----------------------
 # Load the package
 library(letsR)
 
@@ -25,15 +25,15 @@ rangesize <- rangesize / 1000 # Transform in km2
 ## -----------------------------------------------------------------------------
 centroids <- lets.midpoint(PAM)
 
-## ---- message=FALSE, warning=FALSE, echo=FALSE--------------------------------
+## ----message=FALSE, warning=FALSE, echo=FALSE---------------------------------
 library(knitr)
 library(dplyr)
 library(kableExtra)
 
-## ---- eval=FALSE--------------------------------------------------------------
-#  centroids
+## ----eval=FALSE---------------------------------------------------------------
+# centroids
 
-## ---- echo = FALSE------------------------------------------------------------
+## ----echo = FALSE-------------------------------------------------------------
 kable(centroids, "html") %>%
   kable_styling() %>%
   scroll_box(width = "600px", height = "400px")
@@ -46,10 +46,10 @@ sp <- terra::vect(x = d, geom  = c("x", "y"))
 plot(sp)
 plot(sf::st_geometry(wrld_simpl), add = TRUE)
 
-## ---- message = FALSE, warning=FALSE------------------------------------------
+## ----message = FALSE, warning=FALSE-------------------------------------------
 library(ggplot2)
 
-## ---- message=F---------------------------------------------------------------
+## ----message=F----------------------------------------------------------------
 data_plot <- data.frame(centroids[, 2:3], "Range size" = rangesize)
 g <- ggplot(data_plot, aes(x, Range_size))
 g + geom_smooth() + geom_point() + labs(x = "Latitude(x)", y = "Range size")
@@ -60,13 +60,13 @@ r <- terra::unwrap(temp)
 PAM_env <- lets.addvar(PAM, r, fun = mean)
 
 ## -----------------------------------------------------------------------------
-pos <- which(colnames(PAM_env) == "bio1_mean")
+pos <- which(colnames(PAM_env) == "wc2.1_10m_bio_1_mean")
 temp_mean <- lets.summarizer(PAM_env, pos)
 
-## ---- eval=FALSE--------------------------------------------------------------
-#  temp_mean
+## ----eval=FALSE---------------------------------------------------------------
+# temp_mean
 
-## ---- echo = FALSE------------------------------------------------------------
+## ----echo = FALSE-------------------------------------------------------------
 kable(temp_mean, "html") %>%
   kable_styling() %>%
   scroll_box(width = "400px", height = "400px")
@@ -74,10 +74,10 @@ kable(temp_mean, "html") %>%
 ## -----------------------------------------------------------------------------
 data("IUCN")
 
-## ---- eval=FALSE--------------------------------------------------------------
-#  IUCN
+## ----eval=FALSE---------------------------------------------------------------
+# IUCN
 
-## ---- echo = FALSE------------------------------------------------------------
+## ----echo = FALSE-------------------------------------------------------------
 kable(IUCN, "html") %>%
   kable_styling() %>%
   scroll_box(width = "800px", height = "400px")

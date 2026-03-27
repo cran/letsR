@@ -6,7 +6,8 @@
 #' @description Convert species' ranges (in shapefile format) into a presence-absence matrix based on a grid in shapefile format.
 #'
 #' @inheritParams lets.presab 
-#' @param grid Object of class shapefile representing the spatial grid (e.g. regular/irregular cells, 
+#' @param grid Object of class SpatVector (see function
+#'   \code{terra::vect}) representing the spatial grid (e.g. regular/irregular cells, 
 #' political divisions, hexagonal grids, etc). 
 #' The grid and the shapefiles must be in the same projection.
 #' @param sample.unit Object of class \code{character} with the name of the column (in the grid) 
@@ -21,8 +22,8 @@
 #'  
 #'  (II) The original grid.
 #' 
-#' @seealso \code{\link{plot.PresenceAbsence}}
-#' @seealso \code{\link{lets.presab.birds}}
+#' @seealso \code{\link{lets.presab}}
+#' @seealso \code{\link{lets.presab.grid.points}}
 #' @seealso \code{\link{lets.shFilter}} 
 #' 
 #' @examples \dontrun{
@@ -49,7 +50,6 @@
 #' }
 #' 
 #' 
-#' @import terra sf
 #' 
 #' @export
 
@@ -130,7 +130,7 @@ lets.presab.grid <- function(shapes,
   a <- terra::intersect(grid, shapes)
   gover <- as.data.frame(a[, c(sample.unit, "BINOMIAL")])
   for (i in seq_len(nrow(gover))) {
-    pam.par[gover[i, 1], which(gover[i, 2] == spp) + 1] <- 1
+    pam.par[gover[i, 1] == su, which(gover[i, 2] == spp) + 1] <- 1
   }
   
   # Final table names

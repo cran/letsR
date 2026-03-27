@@ -30,9 +30,19 @@
 #' @seealso \code{\link{lets.presab}}
 #' @seealso \code{\link{lets.presab.birds}}
 #'
-#' @import terra
-#' @import sf
-#'
+#' @examples \dontrun{
+#' data(Phyllomedusa)
+#' 
+#' filtered_shape <- lets.shFilter(
+#'   shape = Phyllomedusa,
+#'   presence = 1,
+#'   origin = 1,
+#'   seasonal = 1)
+#'   
+#' if (!is.null(filtered_shape)) {
+#'    plot(filtered_shape, col = "lightgreen", border = "darkgreen")
+#' }
+#'} 
 #' @export
 
 
@@ -54,7 +64,7 @@ lets.shFilter <- function(shapes,
     # Presence filter
     if (!is.null(presence)) {
       pos <- shapes$PRESENCE %in% presence
-      if (length(pos) > 0) {
+      if (sum(pos) > 0) {
         shapes <- shapes[pos, ]
       } else {
         shapes <-  NULL
@@ -64,7 +74,7 @@ lets.shFilter <- function(shapes,
     # Origin filter
     if (!is.null(origin)) {
       pos2 <- shapes$ORIGIN %in% origin
-      if (length(pos2) > 0) {
+      if (sum(pos2) > 0) {
         shapes <- shapes[pos2, ]
       } else {
         shapes <- NULL
@@ -74,7 +84,7 @@ lets.shFilter <- function(shapes,
     # Seasonal filter
     if (!is.null(seasonal)) {
       pos3 <- shapes$SEASONAL %in% seasonal
-      if (length(pos3) > 0) {
+      if (sum(pos3) > 0) {
         shapes <- shapes[pos3, ]
       } else {
         shapes <- NULL

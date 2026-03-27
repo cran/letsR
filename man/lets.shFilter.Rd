@@ -8,7 +8,7 @@ lets.shFilter(shapes, presence = NULL, origin = NULL, seasonal = NULL)
 }
 \arguments{
 \item{shapes}{Object of class \code{SpatVect} or \code{Spatial} (see packages
-\code{\link{terra}} and  \code{\link{sf}} to read these files) containing
+terra and  sf to read these files) containing
 the distribution of one or more species. Species names should be stored in
 the object as BINOMIAL/binomial or SCINAME/sciname.}
 
@@ -45,6 +45,21 @@ Presence codes: (1) Extant, (2) Probably Extant, (3) Possibly
   (4) Passage & (5) Seasonal Occurrence Uncertain.
 
   More info in the shapefiles' metadata.
+}
+\examples{
+\dontrun{
+data(Phyllomedusa)
+
+filtered_shape <- lets.shFilter(
+  shape = Phyllomedusa,
+  presence = 1,
+  origin = 1,
+  seasonal = 1)
+  
+if (!is.null(filtered_shape)) {
+   plot(filtered_shape, col = "lightgreen", border = "darkgreen")
+}
+} 
 }
 \seealso{
 \code{\link{plot.PresenceAbsence}}

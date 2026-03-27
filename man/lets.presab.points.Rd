@@ -26,19 +26,19 @@ column is the longitude (or x), and the second latitude (or y).}
 \item{species}{Character vector with species names, in the same order as the
 coordinates.}
 
-\item{xmn}{Minimun longitude used to construct the grid in which the matrix
+\item{xmn}{Minimum longitude used to construct the grid in which the matrix
 will be based (i.e. the [gridded] geographic domain of interest).
 If NULL, limits will be calculated based on the limits of the shapes object.}
 
-\item{xmx}{Maximun longitude used to construct the grid in which the matrix
+\item{xmx}{Maximum longitude used to construct the grid in which the matrix
 will be based (i.e. the [gridded] geographic domain of interest). 
 If NULL, limits will be calculated based on the limits of the shapes object.}
 
-\item{ymn}{Minimun latitude used to construct the grid in which the matrix
+\item{ymn}{Minimum latitude used to construct the grid in which the matrix
 will be based (i.e. the [gridded] geographic domain of interest).
 If NULL, limits will be calculated based on the limits of the shapes object.}
 
-\item{ymx}{Maximun latitude used to construct the grid in which the matrix
+\item{ymx}{Maximum latitude used to construct the grid in which the matrix
 will be based (i.e. the [gridded] geographic domain of interest).
 If NULL, limits will be calculated based on the limits of the shapes object.}
 
@@ -71,8 +71,8 @@ The result is a list object of class \code{\link{PresenceAbsence}}
 *But see the optional argument \code{show.matrix}.
 }
 \description{
-Convert species' occurrences into a presence-absence matrix based
- on a user-defined grid.
+Convert species' occurrences points into a presence-absence
+ matrix based on a user-defined grid.
 }
 \details{
 The function creates the presence-absence matrix based on a raster

@@ -1,4 +1,4 @@
-## ---- include = FALSE---------------------------------------------------------
+## ----include = FALSE----------------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -6,7 +6,7 @@ knitr::opts_chunk$set(
   fig.width = 6,
   fig.align = 'center')
 
-## ---- message = FALSE, warning = FALSE, r, fig.width = 4----------------------
+## ----message = FALSE, warning = FALSE, r, fig.width = 4-----------------------
 # Load the package
 library(letsR)
 
@@ -32,8 +32,9 @@ plot(sf::st_geometry(wrld_simpl), add = TRUE)
 ## -----------------------------------------------------------------------------
 library(ggplot2)
 
-## ---- warning=FALSE, message=FALSE--------------------------------------------
+## ----warning=FALSE, message=FALSE---------------------------------------------
 mpg <- as.data.frame(resu$Matrix)
+colnames(mpg)[ncol(mpg)] <- "Variable_mean"
 f <- ggplot(mpg, aes(`Latitude(y)`, Variable_mean))
 f + geom_smooth(model = lm) + 
   geom_point(col = rgb(0, 0, 0, .6)) + 

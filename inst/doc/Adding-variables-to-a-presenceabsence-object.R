@@ -1,4 +1,4 @@
-## ---- include = FALSE---------------------------------------------------------
+## ----include = FALSE----------------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -7,10 +7,10 @@ knitr::opts_chunk$set(
   fig.align = 'center'
 )
 
-## ---- message=F, warning=F----------------------------------------------------
+## ----message=F, warning=F-----------------------------------------------------
 library(letsR)
 
-## ---- fig.width=6, fig.height=4-----------------------------------------------
+## ----fig.width=6, fig.height=4------------------------------------------------
 data(temp)
 r <- terra::unwrap(temp) # example data
 
@@ -23,15 +23,15 @@ plot(PAM, main = "Phyllomedusa\nRichness")
 ## -----------------------------------------------------------------------------
 PAM_env <- lets.addvar(PAM, r, fun = mean)
 
-## ---- message=FALSE, warning=FALSE, echo=FALSE--------------------------------
+## ----message=FALSE, warning=FALSE, echo=FALSE---------------------------------
 library(knitr)
 library(dplyr)
 library(kableExtra)
 
-## ---- eval=FALSE--------------------------------------------------------------
-#  head(PAM_env)
+## ----eval=FALSE---------------------------------------------------------------
+# head(PAM_env)
 
-## ---- echo = FALSE------------------------------------------------------------
+## ----echo = FALSE-------------------------------------------------------------
 kable(head(PAM_env), "html") %>%
   kable_styling() %>%
   scroll_box(width = "800px", height = "400px")
@@ -39,17 +39,17 @@ kable(head(PAM_env), "html") %>%
 ## -----------------------------------------------------------------------------
 climate <- lets.addvar(PAM, r, fun = mean, onlyvar = TRUE)
 
-## ---- eval=F------------------------------------------------------------------
-#  head(climate)
+## ----eval=F-------------------------------------------------------------------
+# head(climate)
 
-## ---- echo = FALSE------------------------------------------------------------
+## ----echo = FALSE-------------------------------------------------------------
 kable(head(climate), "html") %>%
   kable_styling()
 
-## ---- message=FALSE, warning=FALSE--------------------------------------------
+## ----message=FALSE, warning=FALSE---------------------------------------------
 library(ggplot2)
 
-## ---- warning = FALSE, message = FALSE, fig.width = 6-------------------------
+## ----warning = FALSE, message = FALSE, fig.width = 6--------------------------
 rich <- rowSums(PAM$P[, -(1:2)])
 
 mpg1 <- data.frame("Temperature" = climate[, 1]/10,
@@ -59,7 +59,7 @@ ggplot(mpg1, aes(Temperature, Richness)) +
   geom_point(col = rgb(0, 0, 0, .6)) + 
   theme_bw()
 
-## ---- warning = FALSE---------------------------------------------------------
+## ----warning = FALSE----------------------------------------------------------
 data("wrld_simpl")
 SA <- c("Brazil", "Colombia",  "Argentina",
         "Peru", "Venezuela", "Chile",
@@ -75,10 +75,10 @@ ggplot(data = south_ame) +
 ## -----------------------------------------------------------------------------
 PAM_pol <- lets.addpoly(PAM, south_ame, "NAME")
 
-## ---- eval=F------------------------------------------------------------------
-#  head(PAM_pol)
+## ----eval=F-------------------------------------------------------------------
+# head(PAM_pol)
 
-## ---- echo = FALSE------------------------------------------------------------
+## ----echo = FALSE-------------------------------------------------------------
 kable(head(PAM_pol), "html") %>%
   kable_styling() %>%
   scroll_box(width = "800px", height = "400px")
@@ -94,7 +94,7 @@ for (i in 1:n) {
 labs <- as.factor(colnames(PAM_pol)[vars_col])
 names(rich_count) <- labs
 
-## ---- fig.width = 7-----------------------------------------------------------
+## ----fig.width = 7------------------------------------------------------------
 mpg <- data.frame("Richness" = rich_count, "Country" = as.factor(labs))
 g <- ggplot(mpg, aes(labs, Richness))
 g + geom_bar(stat = "identity") + labs(x = "") +
